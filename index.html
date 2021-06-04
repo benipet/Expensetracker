@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+<script src="record.js"></script>
+<script src="getlist.js"></script>
+<script src="modification.js"></script>
+
+</head>
+<body onload="getList()">
+
+<header id="expenseLogger">
+    <form action = "Logexpense.php", method = "POST">
+    Name: <input type="text" name="name"><br>
+    Amount: <input type="text" name="amount"><br>
+    Date: <input type="text" name="date"><br>
+    <button type="submit">Submit</button>
+</form>
+
+</header>
+
+
+<section>
+ <form>
+    <table border="1" id="expenseList">
+
+        <th colspan="5">Expense List</th><tr>
+        <td>Date</td><td>Name</td><td>Amount</td><td>Remove</td><td>Modify</td>
+
+
+    </table>
+</form>
+</section>
+<section id="test">
+<table>
+    <th colspan="2" id="headText"></th><tr></tr>
+    <td id="infoDate"></td><td id="dateCell"></td><tr>
+    <td id="infoName"></td><td id="nameCell"></td><tr>
+    <td id="infoAmount"></td><td id="amountCell"></td><tr>
+    <td id="sendCell"></td>
+
+
+</table>
+
+</section>
+<script>
+    function modify(id){
+    var headNode = document.createTextNode("Modify the Record");
+    var dateNode = document.createTextNode("Date:");
+    var nameNode = document.createTextNode("Name:");
+    var amountNode = document.createTextNode("Amount:");
+
+
+    document.getElementById("headText").append(headNode);
+    document.getElementById("infoDate").append(dateNode);
+    document.getElementById("infoName").append(nameNode);
+    document.getElementById("infoAmount").append(amountNode);
+
+    var recNew = new modiForm(id);
+    recNew.SetActionFile("modify.php");
+    recNew.appendFormTo("test");
+
+    recNew.appendInputs("dateCell", "nameCell", "amountCell", "sendCell");
+    }
+
+
+</script>
+
+
+
+</body>
+</html>
